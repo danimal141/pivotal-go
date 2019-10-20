@@ -1,0 +1,18 @@
+version: "3"
+services:
+  app:
+    build: .
+    volumes:
+      - .:/go/src/github.com/danimal141/pivotal-go
+      - go-pkg-mod:/go/pkg/mod
+      - home-cache:/root/.cache
+  godoc:
+    image: golang:1.12 # 1.13 or later does not include `godoc`
+    ports:
+      - 6060
+    volumes:
+      - .:/go/src/github.com/danimal141/pivotal-go
+    command: godoc -http=:6060 -v
+volumes:
+  go-pkg-mod:
+  home-cache:

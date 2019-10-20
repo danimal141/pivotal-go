@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+
+open http://$(docker-compose port godoc 6060)/pkg/github.com/danimal141/pivotal-go/
